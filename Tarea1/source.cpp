@@ -1,5 +1,6 @@
 #include "Arreglos.h"
 int main(){
+  setlocale(LC_ALL, "");
   Arreglo obj1 = Arreglo();
   std::cout << "------------------------------------------------" << std::endl;
   std::cout << "Arreglo de Enteros:" << std::endl;
