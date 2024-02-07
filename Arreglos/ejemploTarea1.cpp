@@ -2,6 +2,7 @@
 
 int main(){
   setlocale(LC_ALL, "");
+  std::cout << "Hola mundo" << std::endl;
   Arreglo array = Arreglo();
   array.MostrarEnteros();
   array.OrdenarEnteros_burbuja();
