@@ -1,6 +1,7 @@
 #include "Arreglos.h"
 
 void Arreglo::MostrarEnteros(){
+  // Función para imprimir arreglo de enteros
   for(int i = 0; i < TAM; i++){
     cout << "\t" << *(enteros + i);    
   }
