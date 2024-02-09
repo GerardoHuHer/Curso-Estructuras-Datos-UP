@@ -29,9 +29,10 @@ void Arreglo::mostrar(){
     std::cout << "Número de Sucursal: "<<obj[i].num_sucursal << std::endl;
     std::cout << "Gerente: "<<obj[i].gerente << std::endl;
     for(int j = 0; j < 2; j++){
-    std::cout << "Venta del mes " << j + 1 << obj[i].ventas[j] << std::endl;
+    std::cout << "Venta del mes " << j + 1 << ": " << obj[i].ventas[j] << std::endl;
     }
   }
+  std::cout << "---------------------------------------" << std::endl;
 }
 
 int Arreglo::llenado(){
@@ -40,9 +41,9 @@ int Arreglo::llenado(){
     if(ocupados >= TAM){
       return -1;
     }
-    std::cout << "Número de sucursal 999 para terminar: \n? ";
+    std::cout << "Ingrese el número de sucursal, para salir ingrese 0 \n? ";
     std::cin >> numS;
-    if(numS == 999){
+    if(numS == 0){
       break;
     }
     obj[ocupados].num_sucursal = numS;
@@ -53,7 +54,7 @@ int Arreglo::llenado(){
       std::cout << "Ingrese la venta del mes " << i + 1 << "\n? ";std::cin >> obj[ocupados].ventas[i]; 
     }
     ocupados++;
-  }while(numS != 999);
+  }while(numS != 0);
 }
 
 void menu(){
@@ -68,16 +69,16 @@ void menu(){
       case 1:
         resultado = obj1.llenado();
         if(resultado == -1 ){
-          std::cout << "El arreglo está lleno";
+          std::cout << "\nEl arreglo está lleno";
         }
         else{
-          std::cout << "Se ha llenado correctamente";
+          std::cout << "\nSe ha llenado correctamente";
         }
         band = true;
         break;
       case 2:
         if(!band){
-          std::cout << "No se ha ingresado ninguna sucursal";
+          std::cout << "\nNo se ha ingresado ninguna sucursal";
         }
         else{
           obj1.mostrar();
