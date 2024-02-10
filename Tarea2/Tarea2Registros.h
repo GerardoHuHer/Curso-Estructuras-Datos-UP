@@ -14,6 +14,7 @@ struct Empleado{
   string nombre;
   int estatura;
   double sueldo;
+
 };
 
 class Arreglo{
@@ -21,7 +22,16 @@ private:
   int ocupados;
   Empleado arr[TAM];
 public:
-  int insertar(string);
+  Arreglo();
   int borrar(string);
+  int insertar(Empleado);
   void bubble_sort();
+  void mostrar();
+  int llenado();
 };
+
+Empleado crearEmp();
+  
+
+void menu();
+

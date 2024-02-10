@@ -55,6 +55,7 @@ int Arreglo::llenado(){
     }
     ocupados++;
   }while(numS != 0);
+  return 0;
 }
 
 void menu(){
