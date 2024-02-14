@@ -110,7 +110,7 @@ void Arreglo::mostrar(){
     cout << "---------------------------------" << endl;
     cout << "\nNombre: " << arr[i].nombre <<
        "\nEstatura: " << arr[i].estatura <<
-       "\nSueldo semanal: " << arr[i].sueldo << endl;
+       "\nSueldo semanal: " << arr[i].sueldo << "\n" << endl;
     
   }
   cout << endl;
@@ -124,7 +124,7 @@ void menu(){
   Arreglo obj;
   string nombre1;
   do{    
-    cout << "1) Ingresar nuevo empleado \n2) Llenar empleados \n3) Borrar empleado \n4) Mostrar lista \n5) Ordenar \n6) Salir ";
+    cout << "\n1) Ingresar nuevo empleado \n2) Llenar empleados \n3) Borrar empleado \n4) Mostrar lista \n5) Ordenar \n6) Salir ";
     cout << "Ingrese la opción deseada: \n? ";
     cin >> opc;
     switch (opc) {
