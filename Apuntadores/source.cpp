@@ -1,10 +1,10 @@
 #include "Apuntadores.h"
 
 int main() {
-    int num = 5;
-    int* direccion_num = &num;
-    char letter = 'A';
-    std::cout << "Número: " << *direccion_num << std::endl;
-    std::cout << "Dirección de Memoria: " << direccion_num << std::endl;
+    int n;
+    Apuntador obj = Apuntador();
+    std::cout << "Ingrese el tamano de su arreglo: \n? ";
+    std::cin >> n;
+    obj.AsignacionEst(n);
     return 0;
 }
