@@ -41,10 +41,12 @@ void Apuntador::Ejemplo_3(){
   std::cout << "plista + 1: " << plista + 1 << std::endl;
   std::cout << "plista: " << *plista << std::endl;
   std::cout << "plista + 1 o lista[1]: " << *(plista + 1) << std::endl;
+  delete [] plista;
 }
 
 void Apuntador::AsignacionEst(int n ){ 
-  int* arr = (int*) malloc(n*sizeof(int));
+  int* arr = new int[n];
+  // int* arr = (int*) malloc(n*sizeof(int));
   
   for(int i = 0; i < n; i++){
     std::cout << "Ingrese el valor: \n? ";
@@ -53,5 +55,6 @@ void Apuntador::AsignacionEst(int n ){
   for(int i = 0; i < n; i++){
     std::cout << *(arr + i) << std::endl;
   }
-  free(arr);
+  // free(arr);
+  delete []arr;
 }
