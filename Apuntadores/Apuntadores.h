@@ -11,7 +11,10 @@ La aritmética de apuntadores se refiere a las operaciones de suma y resta de co
 Es importante hacer notar que a un apuntador no se le puede sumar o restar otro apuntador, solamente se le puede sumar o restar una constante entera.
 */
 
+// Clase
 class Apuntador{
+private: 
+  
 public: 
   void Ejemplo_1();
   void Ejemplo_2();

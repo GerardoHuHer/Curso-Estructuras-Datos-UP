@@ -44,17 +44,18 @@ void Apuntador::Ejemplo_3(){
   delete [] plista;
 }
 
-void Apuntador::AsignacionEst(int n ){ 
-  int* arr = new int[n];
-  // int* arr = (int*) malloc(n*sizeof(int));
+void Apuntador::AsignacionEst(int n){ 
+  // int* arr = new int[n];
+  int* arr = (int*) malloc(n*sizeof(int));
   
   for(int i = 0; i < n; i++){
     std::cout << "Ingrese el valor: \n? ";
     std::cin >> *(arr + i);
   }
   for(int i = 0; i < n; i++){
-    std::cout << *(arr + i) << std::endl;
+    std::cout << "\t" << *(arr + i);
   }
-  // free(arr);
-  delete []arr;
+  std::cout << std::endl;
+  free(arr);
+  // delete []arr;
 }
