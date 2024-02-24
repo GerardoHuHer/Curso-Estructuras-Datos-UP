@@ -22,3 +22,5 @@ private:
   int row;
   int col;
 };
+
+void Burbuja(int*);

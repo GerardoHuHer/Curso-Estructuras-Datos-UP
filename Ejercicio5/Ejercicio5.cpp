@@ -1,14 +1,14 @@
 #include "Ejercicio5.h"
 
 Arreglo::Arreglo(){
+  namefn();
   std::cout << "Enter the number of rows: \n? "; 
   std::cin >> this->row;
   std::cout << "Enter the number of columns: \n? "; 
   std::cin >> this->col;
   arr = new int*[this->row];
   for(int i = 0; i < this->row; i++) 
-    *(this->arr + i) = new int[this->col];  
-  namefn();
+  *(this->arr + i) = new int[this->col];  
 }
 
 void Arreglo::namefn(){
@@ -17,24 +17,39 @@ void Arreglo::namefn(){
 }
 
 void Arreglo::insert(){
-  int cont{0};
-  int cont2{0};
-  while(*(arr + cont) != nullptr){
-    while(*(*(arr + cont2) + cont) != '\0'){
-      std::cout << "Enter the number "<< cont2 + 1<< " from the row " << cont + 1 << ": \n? ";
-      std::cin >> *(*(arr + cont2) + cont);
-      cont2++;
+  for(int i = 0; i < this->row; i++){
+    for(int j = 0; j < this->col; j++){
+      std::cout << "Enter the number "<< j + 1 << " from the row " << i << ": \n? ";
+      std::cin >> *(*(arr + i) + j);
     }
-    cont++;
+  }
+}
+
+void Arreglo::sort(){
+  int aux, cont{0};
+  for(int i = 0; i < this->row; i++){
+    bool ordenado {false};
+    while(!ordenado){
+      ordenado = true;
+      for(int j = 0; j < this->col - 1 - cont; j++){
+        if(arr[i][j] > arr[i][j + 1]){
+          aux = arr[i][j];
+          arr[i][j] = arr[i][j + 1];
+          arr[i][j + 1] = aux;
+          ordenado = false;
+        }
+      }
+    }
   }
 }
 
 void Arreglo::show(){
-  for(int i = 0;i < this->row; i++){
-    for(int j = 0; j < this->col; i++){
-      std::cout << "\t" << *(*(arr + j) + i);
+  for(int i = 0; i < this->row; i++){
+    for(int j = 0; j < this->col; j++){
+      std::cout << "\t" << *(*(arr + i) + j);
     }
     std::cout << std::endl;
   }
   std::cout << std::endl;
 }
+
