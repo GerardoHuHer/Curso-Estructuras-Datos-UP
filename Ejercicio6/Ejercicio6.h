@@ -5,7 +5,7 @@
 class PilaEnteros{
 public:
   PilaEnteros();
-  int push();
+  int push(int);
   int pop();
   void show();
   int consultar();
@@ -13,5 +13,7 @@ private:
   int min, max, tope;
   int* pila;
 };
+
+void menu();
 
 
