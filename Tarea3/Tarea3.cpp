@@ -7,6 +7,7 @@ Array::Array(){
   for(int i = 0; i < tam; i++){
     arr[i].pieces = new int[3]; 
   }
+  ocupados = 0;
 }
 
 void Array::regis(){

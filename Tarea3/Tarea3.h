@@ -17,6 +17,7 @@ public:
 private:
   Employee* arr;
   int tam;
+  int ocupados;
 };
 
 void menu(Array);
