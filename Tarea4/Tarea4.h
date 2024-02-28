@@ -4,15 +4,14 @@
 
 class Pilas{
 private:
-  int* original, depurada;
-  int maxo, mino, topeo;
-  int maxd, mind, toped;
+  int* original;
+  int max, min, tope;
 public:
+  Pilas();
   int push(int);
   int pop();
-  void popd();
-  void pushd(int);
   void mostrar();
-  void mostrard();
-  int depurar();
 };
+
+void menu();
+int depurar(Pilas original,Pilas dep, int num);
