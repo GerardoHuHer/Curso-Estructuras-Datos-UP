@@ -14,4 +14,4 @@ public:
 };
 
 void menu();
-int depurar(Pilas original,Pilas dep, int num);
+int depurar(Pilas original, Pilas dep, int num);
