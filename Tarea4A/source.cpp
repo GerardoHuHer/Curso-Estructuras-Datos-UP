@@ -1,5 +1,5 @@
 #include "Tarea4A.h"
 int main() {
-    menu();
-    return 0;
+  menu();
+  return 0;
 }
