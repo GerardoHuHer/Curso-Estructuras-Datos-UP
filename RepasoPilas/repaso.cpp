@@ -1,19 +1,21 @@
 #include "repaso.h"
+#include <string>
 
 Pila::Pila(){
   tope = NULL;
 }
 
-int Pila::extraer(){
+Estudiante Pila::extraer(){
   Estudiante* aux;
-  int num;
-  // En caso de que tope sea NULL significa que está vacía la Pila
+  Estudiante num;
+    // En caso de que tope sea NULL significa que está vacía la Pila
   if(tope == NULL){
-    return -1;
+    num.ID = -1;
+    return num;
   }
   aux = tope;
   tope = tope -> anterior;
-  num = aux ->ID;
+  num = *aux;
   delete aux;
   return num;
 }
@@ -31,22 +33,71 @@ int Pila::insertar(Estudiante stud){
 }
 
 void Pila::mostrar(){
-  std::cout << "======= PILA =======";
-  if(tope == NULL) std::cout << "Pila vacía\n"; return;
+  std::cout << "\n======= PILA =======\n";
+  if(tope == NULL){ 
+    std::cout << "Pila vacía\n"; 
+    return;
+  }
   nodo = tope;
   std::cout << "ID\t\t\t NOMBRE \t\t\t EDAD" << std::endl;
-  while(nodo != NULL){ std::cout << nodo->ID << "\t\t\t" << nodo->nombre << "\t\t\t" << nodo ->edad;
+  while(nodo != NULL){ 
+    std::cout << nodo->ID << "\t\t\t" << nodo->nombre << "\t\t\t" << nodo ->edad;
     if(nodo == tope) std::cout << " <= TOPE";
     std::cout << std::endl;
+    nodo = nodo->anterior;
   }
 }
 
 void depurar(Pila calif, Pila noCalif){
   std::cout << "... Depurando ..." << std::endl;
-  int ret {0};
+  Estudiante ret; 
   do{
-    ret = noCalif.extraer();
-  }while(ret != -1);
+    ret = calif.extraer();
+    std::cout << ret.ID << std::endl;
+    noCalif.insertar(ret);    
+    
+  }while(ret.ID != -1);
   std::cout << "Fin del depurado" << std::endl;
 }
 
+void menu(){
+  int opc;
+  Estudiante aux;
+  Pila calif, noCalif;
+  do{    
+    std::cout << "\n1) Insertar \n2) Extraer \n3) Mostrar \n4) Depurar \n5) Salir" << std::endl;  
+    std::cout << "Ingrese la opción deseada \n? "; std::cin >> opc;
+    switch (opc) {
+      case 1:
+        std::cout << "Ingrese el ID del estudiante \n? "; std::cin >> aux.ID;
+        std::cin.ignore();
+        std::cout << "Ingrese el nombre del estudiante \n? "; std::getline(std::cin, aux.nombre );
+        std::cout << "Ingrese la edad del estudiante \n? "; std::cin >> aux.edad;
+        calif.insertar(aux);
+        break;
+      case 2:
+        aux = calif.extraer();
+        if(aux.ID == -1) {
+          std::cout << "La pila estaba vacía" << std::endl; 
+          continue;
+        }
+        std::cout << "ID extraído: " << aux.ID << std::endl;
+        break;
+      case 3:
+        std::cout << "\n======= CALIFICADOS =======\n" << std::endl;
+        calif.mostrar();
+        std::cout << "\n======= NO CALIFICADOS =======\n" << std::endl;
+        noCalif.mostrar();
+        break;
+      case 4:
+        depurar(calif, noCalif);
+        break;
+      case 5:
+        std::cout << "Hasta luego" << std::endl;
+        break;
+      default:      
+        std::cout << "No se ingresó una opción válida" << std::endl;
+        break;    
+    }
+  }while(opc != 5);
+}

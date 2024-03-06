@@ -12,7 +12,7 @@ struct Estudiante{
 class Pila{
 public:
   Pila();
-  int extraer();
+  Estudiante extraer();
   int insertar(Estudiante);
   void mostrar();
 
