@@ -40,7 +40,7 @@ void menu(){
   Colas enteros;
   int opc;
   do {
-    std::cout << "\n1) Insertar \n2) Extraer \n3) Mostrar \n4) Salir \n"
+    std::cout << "\n1) Insertar \n2) Extraer \n3) Mostrar \n4) Salir \n"; 
 
   
   }while (opc != 4);
