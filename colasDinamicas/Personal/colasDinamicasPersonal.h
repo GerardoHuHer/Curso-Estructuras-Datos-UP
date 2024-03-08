@@ -4,18 +4,20 @@
 struct Node {
   int data;
   Node *next;
-  Node(int);
 };
 
 class DynamicQueue {
 private:
   Node *front, *rear;
+  Node* nodo;
 public:
   DynamicQueue();
   ~DynamicQueue();
   bool isEmpty();
-  void enqueue();
-  void dequeue();
+  void enqueue(int);
+  int dequeue();
   int peek();
   void display();
 };
+
+void menu();
