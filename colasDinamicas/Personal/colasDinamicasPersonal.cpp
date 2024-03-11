@@ -25,21 +25,11 @@ void DynamicQueue::enqueue(int value) {
 // Function to dequeue (remove) an element from the queue
 int DynamicQueue::dequeue() {
   int num;
-  // if (!isEmpty()) {
-  //   Node *temp = front;
-  //   front = front->next;
-  //   delete temp;
-  //   if (front == nullptr) {
-  //     rear = nullptr;
-  //   }
-  // } else {
-  //   return -1;
-  // }
-  if(isEmpty()){
+  if (isEmpty()) {
     return -1;
   }
-  Node* temp = front;
-  front = front -> next;
+  Node *temp = front;
+  front = front->next;
   num = temp->data;
   delete temp;
   return num;
@@ -57,15 +47,15 @@ int DynamicQueue::peek() {
 // Function to display the elements of the queue
 void DynamicQueue::display() {
   if (!isEmpty()) {
-    Node *current = front;
-    while (current != nullptr) {
-      std::cout << "\t" << current->data;
-      if (current == front)
+    Node *aux = front;
+    while (aux != nullptr) {
+      std::cout << "\t" << aux->data;
+      if (aux == front)
         std::cout << " <= Front";
-      if (current == rear)
+      if (aux == rear)
         std::cout << " <= Rear";
       std::cout << std::endl;
-      current = current->next;
+      aux = aux->next;
     }
     std::cout << std::endl;
   } else {
@@ -90,15 +80,17 @@ void menu() {
       break;
     case 2:
       ret = cola.dequeue();
-      if(ret == -1) std::cout << "The queue is empty" << std::endl;
-      else{
+      if (ret == -1)
+        std::cout << "The queue is empty" << std::endl;
+      else {
         std::cout << "The value was " << ret << std::endl;
       }
       break;
     case 3:
       ret = cola.peek();
-      if(ret == -1) std::cout << "The queue is empty" << std::endl;
-      else{
+      if (ret == -1)
+        std::cout << "The queue is empty" << std::endl;
+      else {
         std::cout << "The front value is " << ret << std::endl;
       }
       break;
@@ -109,7 +101,8 @@ void menu() {
       std::cout << "Goodbye" << std::endl;
       break;
     default:
-      std::cout << "Your value is wrong. Please enter a valid number" << std::endl;
+      std::cout << "Your value is wrong. Please enter a valid number"
+                << std::endl;
       break;
     }
   } while (opc != 5);
