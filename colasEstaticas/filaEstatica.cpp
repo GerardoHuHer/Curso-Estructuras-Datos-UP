@@ -63,7 +63,9 @@ void menu() {
     case 1:
       std::cout << "Ingrese el número que desea insertar a la cola: \n? ";
       std::cin >> ret;
-      enteros.insertar(ret);
+      ret = enteros.insertar(ret);
+      if(ret == -1) std::cout << "La cola está llena" << std::endl;
+      if(ret == 0) std::cout << "Se añadío el valor con éxito" << std::endl;
       break;
     case 2:
       ret = enteros.extrar();
