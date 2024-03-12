@@ -5,7 +5,7 @@ Estructura::Estructura(){
   minimo = 0;
   maximo = TAM - 1;
   for(int i = 0; i < TAM; i++){
-    cola[i] = "-";
+    cola[i] = "- -";
   }
 }
 
@@ -35,7 +35,7 @@ std::string Estructura::extraer(){
   // Paso 2: Pasamos nuestros datos a nuestra variable auxiliar
   aux = cola[principio];
   // Paso 3: Pasamos nuestro valor de la posición extraída por nuestro valor por default
-  cola[principio] = "-";
+  cola[principio] = "- -";
   // Paso 4: Aumentamos nuestro valor de principio
   principio++;
   return aux;
