@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #define TAM 15
 
 struct Boleto {
@@ -15,7 +16,10 @@ private:
   int principio, final;
 public:
   Cola();
-  int insertar();
+  int insertar(std::string, int);
   Boleto extraer();
   void mostrar();
+  void mostrarAfortunado();
 };
+
+void menu();

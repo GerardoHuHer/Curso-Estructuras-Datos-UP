@@ -35,5 +35,5 @@ force_build:
 run: force_build
 	./$(TARGET)
 
-zip:
-	zip -r $(notdir $(CURDIR)).zip . -x "bin/*"
+# zip:
+# 	zip -r $(notdir $(CURDIR)).zip . -x "bin/*"
