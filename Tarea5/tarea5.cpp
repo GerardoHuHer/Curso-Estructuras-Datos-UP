@@ -76,6 +76,7 @@ void Cola::mostrar() {
     std::cout << std::endl;
   }
   std::cout << "=============================" << std::endl;
+    
 }
 void Cola::mostrarAfortunado() {
   std::cout << "========== AFORTUNADOS ==========" << std::endl;
