@@ -38,18 +38,33 @@ std::string Cola::consultar() {
   return inicio->frase;
 }
 
-void Cola::mostrar() {
+void Cola::mostrar(){
   nodo = inicio;
   while (nodo != NULL) {
     std::cout << "\t" << nodo->frase;
-    if (nodo == inicio)
+    if (nodo == inicio) // Accede a inicio desde el objeto Cola pasado como argumento
       std::cout << " <= Inicio";
-    if (nodo == final)
+    if (nodo == final) // Accede a final desde el objeto Cola pasado como argumento
       std::cout << " <= Final";
     std::cout << std::endl;
     nodo = nodo->sig;
   }
 }
+
+std::ostream& operator<<(std::ostream& os, const Cola& a){
+  Frase* nodo = a.inicio; // Accede a inicio desde el objeto Cola pasado como argumento
+  while (nodo != NULL) {
+    os << "\t" << nodo->frase;
+    if (nodo == a.inicio) // Accede a inicio desde el objeto Cola pasado como argumento
+      os << " <= Inicio";
+    if (nodo == a.final) // Accede a final desde el objeto Cola pasado como argumento
+      os << " <= Final";
+    os << std::endl;
+    nodo = nodo->sig;
+  }
+  return os;
+}
+
 
 void menu() {
   int opc;
@@ -76,7 +91,8 @@ void menu() {
         std::cout << "La frase extraída es: " << std::endl << "\t" << ret;
       break;
     case 3:
-      cola.mostrar();
+      // cola.mostrar();
+      mostrar(cola);
       break;
     case 4:
       ret = cola.consultar();
@@ -93,4 +109,10 @@ void menu() {
       break;
     }
   } while (opc != 5);
+}
+
+template<typename T>
+void mostrar(const T& a){
+  std::cout << a << std::endl;
+  
 }
