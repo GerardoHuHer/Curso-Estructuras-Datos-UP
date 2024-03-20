@@ -11,13 +11,14 @@ void ColaLigada::insertar(int nuevo) {
   nodo->sig = NULL;
   // Paso 4: Si es el primer nodo 'incio' = NULL igualar inicio y final a nodo
   if (inicio == NULL) {
-    inicio = final = nodo;
-  } else {
+    inicio = nodo;
+  }
+  if (final != NULL) {
     // Paso 5: Si final != NULL final.sig = nodo
     final->sig = nodo;
-    // Paso 6: final = nodo
-    final = nodo;
   }
+  // Paso 6: final = nodo
+  final = nodo;
 }
 
 int ColaLigada::extraer() {
@@ -25,11 +26,13 @@ int ColaLigada::extraer() {
   if ((inicio == NULL) && (final == NULL)) {
     return -1;
   }
-  Entero *aux = inicio;
   nodo = inicio;
+  num = nodo->num;
   inicio = inicio->sig;
-  num = aux->num;
-  delete aux;
+  if(inicio == NULL){
+    final = NULL; 
+  }
+  delete nodo;
   return num;
 }
 
@@ -52,10 +55,10 @@ void ColaLigada::mostrar() {
   }
 }
 
-int ColaLigada::consultar(){
-  if(inicio == NULL){
+int ColaLigada::consultar() {
+  if (inicio == NULL) {
     return -1;
-  }else{
+  } else {
     return inicio->num;
   }
 }
