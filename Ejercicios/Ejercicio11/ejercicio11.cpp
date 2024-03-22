@@ -1,13 +1,10 @@
 #include "ejercicio11.h"
-#include <csetjmp>
-#include <string>
 
 Caja::Caja(std::string name)
     : name(name), inicio(NULL), final(NULL), nodo(NULL) {}
+Caja::Caja() : name("No name"), inicio(NULL), final(NULL), nodo(NULL) {}
 
-bool Caja::isEmpty(){
-  return inicio != NULL; 
-}
+bool Caja::isEmpty() { return inicio != NULL; }
 
 void Caja::insertar(std::string nuevo) {
   nodo = new Nodo;
@@ -39,7 +36,7 @@ std::string Caja::extraer() {
 
 std::ostream &operator<<(std::ostream &os, const Caja &a) {
   Nodo *nodo = a.inicio;
-  if(a.inicio == NULL){
+  if (a.inicio == NULL) {
     os << "\t\nCaja Vacía" << std::endl;
   }
   std::cout << "\t ========== Caja: " << a.name << " ==========" << std::endl;
@@ -53,6 +50,22 @@ std::ostream &operator<<(std::ostream &os, const Caja &a) {
     nodo = nodo->sig;
   }
   return os;
+}
+Caja operator+(Caja &a, Caja &b) {
+  Caja aux = Caja("Caja nueva");
+  std::string turno;
+  do {
+
+    turno = a.extraer();
+    if (turno != " ") {
+      aux.insertar(turno);
+    }
+    turno = b.extraer();
+    if (turno != " ") {
+      aux.insertar(turno);
+    }
+  } while (a.isEmpty() || b.isEmpty());
+  return aux;
 }
 
 void menu() {
@@ -82,7 +95,12 @@ void menu() {
         cont++;
       } else {
         std::string countds = std::to_string(contd);
-        D10.insertar("DD-" + countds);
+        if (contd < 10) {
+
+          D10.insertar("DD-0" + countds);
+        } else {
+          D10.insertar("DD-" + countds);
+        }
         contd++;
       }
       break;
@@ -121,29 +139,32 @@ void menu() {
       break;
     case 3:
       std::cout << "FILA CC-20" << std::endl;
-      std::cout << "\t"<< C20 << std::endl;
+      std::cout << "\t" << C20 << std::endl;
       std::cout << std::endl;
       std::cout << "FILA CC-25" << std::endl;
-      std::cout << "\t"<< C25 << std::endl;
+      std::cout << "\t" << C25 << std::endl;
       std::cout << std::endl;
       std::cout << "FILA DD-10" << std::endl;
-      std::cout << "\t"<< D10 << std::endl;
+      std::cout << "\t" << D10 << std::endl;
       std::cout << std::endl;
       break;
     case 4:
-      std::cout << "Se han bloqueado las cajas C25 y C20" << std::endl;
+      // std::cout << "Se han bloqueado las cajas C25 y C20" << std::endl;
+      // bloqueo = true;
+      // do{
+      //   ret = C20.extraer();
+      //   if(ret != " "){
+      //     D10.insertar(ret);
+      //   }
+      //   ret = C25.extraer();
+      //   if(ret != " "){
+      //     D10.insertar(ret);
+      //   }
+      // }while(C20.isEmpty() || C25.isEmpty());
+      // std::cout << "Se están movimiendo los clientes a la fila D10" <<
+      // std::endl;
+      D10 = C20 + C25;
       bloqueo = true;
-      do{
-        ret = C20.extraer();
-        if(ret != " "){
-          D10.insertar(ret);
-        }
-        ret = C25.extraer();
-        if(ret != " "){
-          D10.insertar(ret);
-        }
-      }while(C20.isEmpty() || C25.isEmpty());
-      std::cout << "Se están movimiendo los clientes a la fila D10" << std::endl;
       break;
     case 5:
       std::cout << "Hasta luego" << std::endl;
