@@ -7,11 +7,14 @@ enum class Option {
   INSERTAR_INICIO = 1,
   INSERTAR_FINAL,
   INSERTAR,
+  EXTRAER_INICIO,
+  EXTRAER_FINAL,
+  EXTRAER,
   DISPLAY,
   EXIT
 };
 
-Option enter_option();
+const Option enter_option();
 void menu();
 
 struct Nodo {
@@ -26,8 +29,11 @@ private:
 public:
   Lista();
   void insertar_inicio(const std::string&);
-  int insertar_intermedio(std::string, std::string);
-  int insertar_final(std::string);
+  const int insertar_intermedio(const std::string&, const std::string&);
+  const int insertar_final(const std::string& );
+  const std::string extraer_inicio();
+  const std::string extraer_intermedio(const std::string&);
+  const std::string extraer_final();
   void display();
 };
 
