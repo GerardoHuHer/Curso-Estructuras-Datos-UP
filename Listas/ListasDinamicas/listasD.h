@@ -24,6 +24,16 @@ Insertar al final:
 - FINAL ahora apunta al nuevo nodo. 
 
 Remover:
+Final:
+Localizar el nodo final y su anterior.
+Tomar e informar la información del nodo a extraer.
+Apuntar a NULO el enlace del nodo anterir.
+
+Intermedio:
+Localizar el nodo a extraer, conservando el nodo anterior.
+Tomar el informar la información a extraer.
+Apuntar al enlace de ndoo anterior al nodo que sigue al extraído.
+
 */
 
 struct Nodo{
