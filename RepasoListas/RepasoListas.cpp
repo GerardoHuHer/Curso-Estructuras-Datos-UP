@@ -61,12 +61,13 @@ void menu_listaC() {
   }
 }
 
+template<typename T>
 void menu_lista() {
   Option_menu opc;
   Lista_option ret;
-  int valor;
-  int pos;
-  Lista<int> lista = Lista<int>();
+  T valor;
+  T pos;
+  Lista<T> lista = Lista<T>();
   while ((opc = menu_enter_option()) != Option_menu::Exit) {
     switch (opc) {
 
@@ -151,7 +152,7 @@ void run() {
   while ((opc = enter_option_princ()) != Menu_prin::Terminar) {
     switch (opc) {
     case Menu_prin::Normales:
-      menu_lista();
+      menu_lista<int>();
       break;
     case Menu_prin::Circulares:
       menu_listaC();
