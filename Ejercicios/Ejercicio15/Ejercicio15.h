@@ -10,6 +10,7 @@ enum class Option{
   EXTRAER_INICIO = 1,
   EXTRAER_INTER,
   EXTRAER_FINAL,
+  DISPLAY,
   SALIR
 };
 

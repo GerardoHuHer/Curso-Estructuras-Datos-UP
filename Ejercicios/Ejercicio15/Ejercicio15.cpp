@@ -1,91 +1,138 @@
 #include "Ejercicio15.h"
 
-Lista::Lista(): head(nullptr), final(nullptr), nodo(nullptr){}
+Lista::Lista() : head(nullptr), final(nullptr), nodo(nullptr) {}
 
-void Lista::insertar_inicio(const std::string& nuevo){
+void Lista::insertar_inicio(const std::string &nuevo) {
   nodo = new Nodo;
   nodo->palabra = nuevo;
   nodo->sig = head;
-  if(head  == nullptr){
+  if (head == nullptr) {
     final = nodo;
-  }else {
-    head ->prev = nodo;
+  } else {
+    head->prev = nodo;
   }
   nodo->prev = nullptr;
   head = nodo;
 }
 
-void Lista::insertar_final(const std::string& nuevo){
-  if(head == nullptr){
+void Lista::insertar_final(const std::string &nuevo) {
+  if (head == nullptr) {
     insertar_inicio(nuevo);
     return;
   }
   nodo = new Nodo;
-  nodo ->palabra = nuevo;
-  nodo -> sig = nullptr;
-  nodo ->prev = final;
+  nodo->palabra = nuevo;
+  nodo->sig = nullptr;
+  nodo->prev = final;
   final->sig = nodo;
   final = nodo;
 }
 
-void Lista::insertar_intermedio(const std::string& nuevo, const std::string& pos){
-  if(head == nullptr){
+void Lista::insertar_intermedio(const std::string &nuevo,
+                                const std::string &pos) {
+  if (head == nullptr) {
     insertar_inicio(nuevo);
     return;
   }
   bool find = false;
-  Nodo* nodo_anterior = head;
-  while(nodo_anterior != nullptr){
-    if(nodo_anterior->palabra == pos){
+  Nodo *nodo_anterior = head;
+  while (nodo_anterior != nullptr) {
+    if (nodo_anterior->palabra == pos) {
       find = true;
       break;
     }
     nodo_anterior = nodo_anterior->sig;
   }
-  if(find){
+  if (find) {
     nodo = new Nodo;
-    nodo ->palabra = nuevo;
+    nodo->palabra = nuevo;
     nodo->sig = nodo_anterior->sig;
     nodo->prev = nodo_anterior;
     nodo_anterior->sig->prev = nodo;
     nodo_anterior->sig = nodo;
     return;
   }
-  if(!find){
+  if (!find) {
     insertar_final(nuevo);
   }
 }
 
-std::string Lista::extraer_inicio(){
+std::string Lista::extraer_inicio() {
   std::string extraida;
-  if(head == nullptr){
+  if (head == nullptr) {
     return "";
   }
   nodo = new Nodo;
   nodo = head;
   extraida = nodo->palabra;
   head = nodo->sig;
-  head -> prev = nullptr;
+  head->prev = nullptr;
   delete nodo;
-  if(final->prev == nullptr){
+  if (final->prev == nullptr) {
     final = head = nullptr;
     return "";
   }
   return extraida;
 }
 
+std::string Lista::extraer_final() {
+  std::string extraida;
+  if (head == nullptr) {
+    return "";
+  }
+  if (head == final) {
+    extraida = extraer_inicio();
+    return extraida;
+  }
+  nodo = final;
+  extraida = final->palabra;
+  nodo->prev->sig = nullptr;
+  final = nodo->prev;
+  delete nodo;
+  return extraida;
+}
 
-void Lista::display(){
-  if(head == nullptr){
+std::string Lista::extraer_intermedio(const std::string &pos) {
+  std::string extraida;
+  if (head == nullptr) {
+    return "";
+  }
+  if (head->palabra == pos) {
+    return extraer_inicio();
+  }
+  if (final->palabra == pos) {
+    return extraer_inicio();
+  }
+  if (final == head) {
+    return extraer_inicio();
+  }
+  nodo = head;
+  while (nodo != final) {
+    if (nodo->palabra == pos) {
+      extraida = nodo->palabra;
+      nodo ->prev ->sig = nodo->sig;
+      nodo->sig->prev = nodo->prev;
+      delete nodo;
+      return extraida;
+    }
+    nodo = nodo->sig;
+  }
+  return "";
+}
+
+void Lista::display() {
+  if (head == nullptr) {
     std::cout << "LISTA VACÍA" << std::endl;
     return;
   }
   std::cout << "LISTA" << std::endl;
   nodo = head;
-  while(nodo != nullptr){
-    std::cout << "\t" << nodo ->palabra;
-    if(nodo == final) std::cout << " <= FINAL";
-    if(nodo == head) std::cout << " <= INICIO";
+  while (nodo != nullptr) {
+    std::cout << "\t" << nodo->palabra;
+    if (nodo == final)
+      std::cout << " <= FINAL";
+    if (nodo == head)
+      std::cout << " <= INICIO";
     std::cout << std::endl;
     nodo = nodo->sig;
   }
