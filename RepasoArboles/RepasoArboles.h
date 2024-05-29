@@ -1,7 +1,6 @@
 #ifndef REPASOARBOLES_H
 #define REPASOARBOLES_H
 #include <iostream>
-#include <iterator>
 
 enum class Option {
   INSERTAR = 1,
@@ -70,6 +69,7 @@ public:
       in_order(start->right);
     }
   }
+
   void pre_order(Nodo *start) {
     std::cout << "\t" << start->data;
     if (start->left != NULL) {
@@ -79,6 +79,7 @@ public:
       in_order(start->right);
     }
   }
+
   void post_order(Nodo *start) {
     if (start->left != NULL) {
       in_order(start->left);
