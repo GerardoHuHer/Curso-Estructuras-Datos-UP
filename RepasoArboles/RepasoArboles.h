@@ -49,10 +49,10 @@ public:
       if (start->right == NULL) {
         start->right = nodo;
         return;
+      } else {
+        insert(start->right);
+        return;
       }
-    } else {
-      insert(start->right);
-      return;
     }
     delete nodo;
     return;
@@ -129,62 +129,59 @@ template <typename T> void menu() {
       root = tree.get_root();
     case Option::INSERTAR:
       std::cout << "Ingrese el valor que desea insertar: \n> ";
-      std::cin>> ret;
+      std::cin >> ret;
       tree.create_node(ret);
       root = tree.get_root();
       tree.insert(root);
       break;
     case Option::DISPLAY:
-      if(root == NULL){
+      if (root == NULL) {
         std::cout << "Árbol vació" << std::endl;
-      } else{
-        tree.display(root, 0 );
+      } else {
+        tree.display(root, 0);
       }
       break;
     case Option::IN_ORDER:
-      if(root == NULL){
+      if (root == NULL) {
         std::cout << "Árbol vació" << std::endl;
-      } else{
+      } else {
         std::cout << "In-Order" << std::endl;
         tree.in_order(root);
         std::cout << std::endl << std::endl;
-
       }
       break;
     case Option::POST_ORDER:
-      if(root == NULL){
+      if (root == NULL) {
         std::cout << "Árbol vació" << std::endl;
-      } else{
+      } else {
         std::cout << "Post-Order" << std::endl;
         tree.post_order(root);
         std::cout << std::endl << std::endl;
-
       }
       break;
     case Option::PRE_ORDER:
-      if(root == NULL){
+      if (root == NULL) {
         std::cout << "Árbol vació" << std::endl;
-      } else{
+      } else {
         std::cout << "Pre-Order" << std::endl;
         tree.pre_order(root);
         std::cout << std::endl << std::endl;
-
       }
       break;
     case Option::SEARCH:
-      if(root == NULL){
+      if (root == NULL) {
         std::cout << "Árbol vació" << std::endl;
-      } else{
+      } else {
         std::cout << "Ingrese el valor que desea buscar: \n> ";
         std::cin >> search;
-        aux = tree.search_in_order(search, root );
-        if(aux == NULL){
-          std::cout << "No se encontro el valor: \n" << "\t" << search << std::endl; 
-        } else{
+        aux = tree.search_in_order(search, root);
+        if (aux == NULL) {
+          std::cout << "No se encontro el valor: \n"
+                    << "\t" << search << std::endl;
+        } else {
           tree.in_order(aux);
-          std::cout<<std::endl<<std::endl;
+          std::cout << std::endl << std::endl;
         }
-
       }
       break;
     case Option::EXIT:
