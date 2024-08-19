@@ -60,12 +60,12 @@ Nodo* Arbol::buscar(Producto codigo, Nodo* pos){
   if(pos->pro == codigo){
     return pos;
   }
-  if(pos->pro < codigo){
+  if(pos->pro > codigo){
     if(pos->izq != NULL){
       return buscar(codigo, pos->izq);
     }
   }
-  if(pos->pro > codigo){
+  if(pos->pro < codigo){
     if(pos->der != NULL){
       return buscar(codigo, pos->der);
     }
